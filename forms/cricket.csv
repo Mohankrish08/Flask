@@ -1,0 +1,61 @@
+question_id,question_text,option_id,option_text,sub_option_id,sub_option_text
+1,Who won the ICC Cricket World Cup 2019?,1,England,1,Final win in Super Over
+1,Who won the ICC Cricket World Cup 2019?,1,England,2,Hosted by England
+1,Who won the ICC Cricket World Cup 2019?,1,England,3,Beat New Zealand
+1,Who won the ICC Cricket World Cup 2019?,2,New Zealand,4,Lost in the final
+1,Who won the ICC Cricket World Cup 2019?,2,New Zealand,5,Hosted by Australia
+1,Who won the ICC Cricket World Cup 2019?,2,New Zealand,6,Played against England
+1,Who won the ICC Cricket World Cup 2019?,3,India,7,Quarter-finalist
+1,Who won the ICC Cricket World Cup 2019?,3,India,8,Had highest run scorer
+1,Who won the ICC Cricket World Cup 2019?,3,India,9,Did not reach final
+1,Who won the ICC Cricket World Cup 2019?,4,Australia,10,Semi-finalist
+1,Who won the ICC Cricket World Cup 2019?,4,Australia,11,Previous champions
+1,Who won the ICC Cricket World Cup 2019?,4,Australia,12,Hosted by Australia
+2,Which player scored the highest individual score in ODI cricket?,5,Rohit Sharma,13,264 runs against Sri Lanka
+2,Which player scored the highest individual score in ODI cricket?,5,Rohit Sharma,14,Double century
+2,Which player scored the highest individual score in ODI cricket?,5,Rohit Sharma,15,Indian player
+2,Which player scored the highest individual score in ODI cricket?,6,Martin Guptill,16,237 not out in World Cup
+2,Which player scored the highest individual score in ODI cricket?,6,Martin Guptill,17,New Zealand player
+2,Which player scored the highest individual score in ODI cricket?,6,Martin Guptill,18,Scored in 2015
+2,Which player scored the highest individual score in ODI cricket?,7,Chris Gayle,19,215 runs in World Cup
+2,Which player scored the highest individual score in ODI cricket?,7,Chris Gayle,20,West Indies player
+2,Which player scored the highest individual score in ODI cricket?,7,Chris Gayle,21,Played in 2015
+2,Which player scored the highest individual score in ODI cricket?,8,Sachin Tendulkar,22,200* in ODI
+2,Which player scored the highest individual score in ODI cricket?,8,Sachin Tendulkar,23,First double century
+2,Which player scored the highest individual score in ODI cricket?,8,Sachin Tendulkar,24,Indian legend
+3,What is the maximum number of overs allowed per bowler in an ODI match?,9,10 overs,25,Standard ODI rule
+3,What is the maximum number of overs allowed per bowler in an ODI match?,9,10 overs,26,Applies to all bowlers
+3,What is the maximum number of overs allowed per bowler in an ODI match?,9,10 overs,27,Introduced in 1983
+3,What is the maximum number of overs allowed per bowler in an ODI match?,10,5 overs,28,Only in T20s
+3,What is the maximum number of overs allowed per bowler in an ODI match?,10,5 overs,29,Short format rule
+3,What is the maximum number of overs allowed per bowler in an ODI match?,10,5 overs,30,Rarely used
+3,What is the maximum number of overs allowed per bowler in an ODI match?,11,15 overs,31,Not allowed in any format
+3,What is the maximum number of overs allowed per bowler in an ODI match?,11,15 overs,32,Misconception
+3,What is the maximum number of overs allowed per bowler in an ODI match?,11,15 overs,33,Fake rule
+3,What is the maximum number of overs allowed per bowler in an ODI match?,12,20 overs,34,Belongs to Test cricket
+3,What is the maximum number of overs allowed per bowler in an ODI match?,12,20 overs,35,Unlimited overs
+3,What is the maximum number of overs allowed per bowler in an ODI match?,12,20 overs,36,Format confusion
+4,Which team has won the most IPL titles?,13,Mumbai Indians,37,5-time champions
+4,Which team has won the most IPL titles?,13,Mumbai Indians,38,Led by Rohit Sharma
+4,Which team has won the most IPL titles?,13,Mumbai Indians,39,Dominated IPL history
+4,Which team has won the most IPL titles?,14,Chennai Super Kings,40,4-time champions
+4,Which team has won the most IPL titles?,14,Chennai Super Kings,41,Led by MS Dhoni
+4,Which team has won the most IPL titles?,14,Chennai Super Kings,42,Consistent playoff team
+4,Which team has won the most IPL titles?,15,Kolkata Knight Riders,43,2-time champions
+4,Which team has won the most IPL titles?,15,Kolkata Knight Riders,44,Won under Gambhir
+4,Which team has won the most IPL titles?,15,Kolkata Knight Riders,45,Strong bowling team
+4,Which team has won the most IPL titles?,16,Sunrisers Hyderabad,46,1-time champions
+4,Which team has won the most IPL titles?,16,Sunrisers Hyderabad,47,Won in 2016
+4,Which team has won the most IPL titles?,16,Sunrisers Hyderabad,48,Known for bowling strength
+5,Who is the captain of the Indian cricket team as of 2024?,17,Rohit Sharma,49,ODI and Test captain
+5,Who is the captain of the Indian cricket team as of 2024?,17,Rohit Sharma,50,Became captain in 2021
+5,Who is the captain of the Indian cricket team as of 2024?,17,Rohit Sharma,51,Known for big scores
+5,Who is the captain of the Indian cricket team as of 2024?,18,Virat Kohli,52,Former captain
+5,Who is the captain of the Indian cricket team as of 2024?,18,Virat Kohli,53,Known for aggression
+5,Who is the captain of the Indian cricket team as of 2024?,18,Virat Kohli,54,Focuses on batting
+5,Who is the captain of the Indian cricket team as of 2024?,19,KL Rahul,55,Vice-captain in ODIs
+5,Who is the captain of the Indian cricket team as of 2024?,19,KL Rahul,56,Known for consistency
+5,Who is the captain of the Indian cricket team as of 2024?,19,KL Rahul,57,Backup captain
+5,Who is the captain of the Indian cricket team as of 2024?,20,MS Dhoni,58,Retired in 2020
+5,Who is the captain of the Indian cricket team as of 2024?,20,MS Dhoni,59,Captain in 2011 WC win
+5,Who is the captain of the Indian cricket team as of 2024?,20,MS Dhoni,60,CSK leader

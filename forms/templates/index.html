@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Cricket Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+    
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #007bff;
+        }
+    
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        h3 {
+            margin: 15px 0;
+            color: #0056b3;
+        }
+    
+        div {
+            margin-bottom: 15px;
+        }
+    
+        input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    
+        label {
+            font-size: 16px;
+            cursor: pointer;
+            color: #495057;
+        }
+    
+        .sub-options {
+            margin-left: 20px;
+            padding: 10px;
+            border-left: 2px solid #6c757d;
+            background: #f1f3f5;
+            border-radius: 5px;
+        }
+    
+        .sub-options p {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+    
+        .sub-options ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .sub-options li {
+            margin: 5px 0;
+            padding: 5px 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #495057;
+        }
+    
+        .sub-options li:hover {
+            background: #dee2e6;
+        }
+    
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    
+        button[type="submit"]:hover {
+            background: #0056b3;
+        }
+    
+        hr {
+            border: 0;
+            height: 1px;
+            background: #dee2e6;
+            margin: 20px 0;
+        }
+
+        #session-alert {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        #session-alert button {
+            margin: 10px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <h1>Cricket Quiz</h1>
+    <form onsubmit="submitForm(event)">
+        {% for question_id, question_data in questions.items() %}
+            <div data-question-id="{{ question_id }}">
+                <h3>{{ question_data['question_text'] }}</h3>
+                {% for option_id, option_data in question_data['options'].items() %}
+                    <div>
+                        <input 
+                            type="radio" 
+                            name="question-{{ question_id }}" 
+                            id="option-{{ option_id }}" 
+                            value="{{ option_id }}" 
+                            onclick="showSubOptions('{{ question_id }}', '{{ option_id }}')">
+                        <label for="option-{{ option_id }}">{{ option_data['option_text'] }}</label>
+                    </div>
+                {% endfor %}
+                {% for option_id, option_data in question_data['options'].items() %}
+                    <div 
+                        class="sub-options sub-options-{{ question_id }}" 
+                        id="sub-options-{{ question_id }}-{{ option_id }}" 
+                        style="display: none; margin-left: 20px;">
+                        <p>Sub-options:</p>
+                        <ul>
+                            {% for sub_option in option_data['sub_options'] %}
+                                <li>
+                                    <input 
+                                        type="radio" 
+                                        name="sub-option-{{ question_id }}-{{ option_id }}" 
+                                        id="sub-option-{{ sub_option['sub_option_id'] }}" 
+                                        value="{{ sub_option['sub_option_id'] }}">
+                                    <label for="sub-option-{{ sub_option['sub_option_id'] }}">{{ sub_option['sub_option_text'] }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    <div id="session-alert">
+        <p>Your session will expire in 1 minute. Would you like to extend it?</p>
+        <button onclick="resetSession()">Extend Session</button>
+        <button onclick="location.reload()">Refresh page</button>
+    </div>
+</body>
+
+<script>
+    let sessionDuration = {{ remaining_time | tojson}} * 1000;
+    let warningTime = 60 * 1000;
+    let sessionTimeout;
+
+    function startSession() {
+        const alertBox = document.getElementById('session-alert');
+
+        clearTimeout(sessionTimeout);
+
+        setTimeout(() => {
+            alertBox.style.display = 'block';
+        },  sessionDuration - warningTime);
+
+        sessionTimeout = setTimeout(() => {
+            alertBox.style.display = 'none';
+            location.reload()
+        }, sessionDuration);
+    }
+
+    function resetSession() {
+        fetch('/extend_session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            startSession();
+            document.getElementById('session-alert').style.display = 'none';
+        })
+        .catch(error => {
+            console.log('Error:', error)
+        })
+    }
+
+    function showSubOptions(questionId, optionId) {
+            const subOptions = document.querySelectorAll(`.sub-options-${questionId}`);
+            subOptions.forEach(option => option.style.display = 'none');
+
+            const selectedSubOptions = document.querySelector(`#sub-options-${questionId}-${optionId}`);
+            if (selectedSubOptions) {
+                selectedSubOptions.style.display = 'block';
+            }
+        }
+
+        // Function to collect form data and send it to the backend
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const selectedOptions = {}; // Object to hold selected options
+            const questions = document.querySelectorAll('[data-question-id]');
+
+            questions.forEach(question => {
+                const questionId = question.getAttribute('data-question-id');
+                const selectedOption = document.querySelector(
+                    `input[name="question-${questionId}"]:checked`
+                );
+                if (selectedOption) {
+                    selectedOptions[questionId] = {
+                        optionId: selectedOption.value,
+                        subOptionId: null,
+                    };
+
+                    // Check if there's a sub-option selected
+                    const subOption = document.querySelector(
+                        `#sub-options-${questionId}-${selectedOption.value} input:checked`
+                    );
+                    if (subOption) {
+                        selectedOptions[questionId].subOptionId = subOption.value;
+                    }
+                }
+            });
+
+            // Send the selected options to the backend
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(selectedOptions),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Response from server:', data);
+                    alert('Form submitted successfully!');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startSession();
+        })
+</script>
+</html>
