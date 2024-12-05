@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="https://pngtree.com/so/account" sizes="40x40" type="images/png">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+          <div class="sign-in-section">
+            <h2>Sign In</h2>
+            <form>
+              <div class="input-group">
+                <label for="username">USERNAME</label>
+                <input type="text" id="username" placeholder="Enter username">
+              </div>
+              <div class="input-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" placeholder="Password">
+              </div>
+              <div class="options">
+                <label><input type="checkbox"> Remember Me</label>
+                <a href="#" class="forgot-password">Forgot Password</a>
+              </div>
+              <button type="submit" id="submitBtn" class="sign-in-btn">Sign In</button>
+            </form>
+            <div class="social-icons">
+              <a href="#"><img src="{{ url_for('static', filename='images/google.png') }}" class="icon" alt="Google"></a>
+              <a href="#"><img src="{{ url_for('static', filename='images/Github.png') }}" class="icon" alt="GitHub"></a>
+            </div>
+          </div>
+          <div class="welcome-section">
+            <h2>Welcome to login</h2>
+            <p>Don't have an account?</p>
+            <a href="#" class="sign-up-btn">Sign Up</a>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+
+</html>
