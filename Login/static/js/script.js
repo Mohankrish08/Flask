@@ -67,5 +67,34 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
     
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const signup = document.getElementById("sign-up");
+    signup.addEventListener("click", function(e) {
+        e.preventDefault()
+        fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({"code": "success"})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error (`HTTPS Error: ${response.status}`)
+            }
+            return response.text()
+        })
+        .then(html => {
+            document.body.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Fetch Error:', error);
+        });
+
+    });
+    
+    
 })
 
